@@ -1,0 +1,5 @@
+.vs/
+.vscode/
+out/
+src/dirent.h
+CMakeSettings.json
