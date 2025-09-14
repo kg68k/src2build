@@ -9,6 +9,14 @@ if (MSVC)
   message(STATUS "MSVC detected")
   target_compile_options(${PROJECT_NAME} PRIVATE /source-charset:utf-8 /execution-charset:shift_jis)
   target_compile_options(${PROJECT_NAME} PRIVATE /J)
+
+  include(FetchContent)
+  FetchContent_Declare(
+      dirent
+      URL https://github.com/tronkko/dirent/archive/refs/tags/1.26.zip
+  )
+  FetchContent_MakeAvailable(dirent)
+  target_link_libraries(${PROJECT_NAME} dirent)
 else()
   message(STATUS "GCC/Clang detected")
   target_compile_options(${PROJECT_NAME} PRIVATE -funsigned-char -O3 -Wall -Wextra -Werror -pipe)
